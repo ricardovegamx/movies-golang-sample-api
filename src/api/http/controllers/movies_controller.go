@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/ricardovegamx/movies-api/src/api/services"
+	"github.com/ricardovegamx/movies-golang-sample-api/src/api/services"
 )
 
 /*

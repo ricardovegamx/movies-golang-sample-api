@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/ricardovegamx/movies-api/src/api/domain"
+import "github.com/ricardovegamx/movies-golang-sample-api/src/api/domain"
 
 /*
 * Responses based on https://github.com/omniti-labs/jsend specification
