@@ -10,6 +10,7 @@ type MovieDaoInterface interface {
 	GetAll() *[]Movie
 	Get(id uint64) (*Movie, error)
 	Update(id uint64, movie *Movie) (*Movie, error)
+	Create(movie *Movie) *Movie
 }
 
 type movieDao struct{}
@@ -41,4 +42,9 @@ func (m *movieDao) Update(id uint64, updatedMovie *Movie) (*Movie, error) {
 	}
 
 	return nil, BadRequestError(fmt.Sprintf("there was an error trying to update the movie with id %d", id))
+}
+
+func (m *movieDao) Create(movie *Movie) *Movie {
+	Database = append(Database, *movie)
+	return movie
 }

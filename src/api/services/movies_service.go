@@ -31,3 +31,7 @@ func (m *moviesService) Update(id uint64, movie *domain.Movie) (*domain.Movie, e
 
 	return updatedMovie, err
 }
+
+func (m *moviesService) Create(movie *domain.Movie) *domain.Movie {
+	return domain.MovieDao.Create(movie)
+}

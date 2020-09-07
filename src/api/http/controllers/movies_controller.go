@@ -77,3 +77,23 @@ func Update(c *gin.Context) {
 	})
 	return
 }
+
+func Create(c *gin.Context) {
+	movie := &domain.Movie{}
+	if c.ShouldBind(movie) == nil {
+		createdMovie := services.MoviesService.Create(movie)
+		c.JSON(http.StatusCreated, &responses.SuccessResponseGet{
+			Status: responses.StatusSuccess,
+			Data: struct {
+				Movie *domain.Movie `json:"movie"`
+			}{Movie: createdMovie},
+		})
+		return
+	}
+
+	c.JSON(http.StatusBadRequest, &responses.FailResponse{
+		Status: responses.StatusFail,
+		Data:   "malformed body",
+	})
+	return
+}
