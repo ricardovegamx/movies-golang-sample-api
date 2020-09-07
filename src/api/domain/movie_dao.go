@@ -11,6 +11,7 @@ type MovieDaoInterface interface {
 	Get(id uint64) (*Movie, error)
 	Update(id uint64, movie *Movie) (*Movie, error)
 	Create(movie *Movie) *Movie
+	Delete(id uint64) bool
 }
 
 type movieDao struct{}
@@ -47,4 +48,15 @@ func (m *movieDao) Update(id uint64, updatedMovie *Movie) (*Movie, error) {
 func (m *movieDao) Create(movie *Movie) *Movie {
 	Database = append(Database, *movie)
 	return movie
+}
+
+func (m *movieDao) Delete(id uint64) bool {
+	for index, movie := range Database {
+		if movie.Id == id {
+			Database = append(Database[:index], Database[index+1:]...)
+			return true
+		}
+	}
+
+	return false
 }

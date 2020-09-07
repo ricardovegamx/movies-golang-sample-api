@@ -97,3 +97,22 @@ func Create(c *gin.Context) {
 	})
 	return
 }
+
+func Delete(c *gin.Context) {
+	movieId, _ := strconv.ParseUint(c.Param("movie_id"), 10, 64)
+	wasDeleted := services.MoviesService.Delete(movieId)
+
+	if !wasDeleted {
+		c.JSON(http.StatusNotFound, &responses.FailResponse{
+			Status: responses.StatusFail,
+			Data:   "resource was not found",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status": responses.StatusSuccess,
+		"data":   nil,
+	})
+	return
+}
