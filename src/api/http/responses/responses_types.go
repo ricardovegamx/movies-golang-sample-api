@@ -21,7 +21,7 @@ type SuccessResponseGetAll struct {
 type SuccessResponseGet struct {
 	Status string `json:"status"`
 	Data   struct {
-		Movie domain.Movie `json:"movie"`
+		Movie *domain.Movie `json:"movie"`
 	} `json:"data"`
 }
 

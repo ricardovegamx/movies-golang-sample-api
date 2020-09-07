@@ -11,7 +11,7 @@ func init() {
 func StartApp() {
 	UrlMappings()
 
-	err := router.Run(":9000")
+	err := router.Run(":8080")
 	if err != nil {
 		panic(err)
 	}

@@ -6,4 +6,6 @@ import (
 
 func UrlMappings() {
 	router.GET("/movies", controllers.Index)
+	router.GET("/movies/:movie_id", controllers.Get)
+	router.PUT("/movies/:movie_id", controllers.Update)
 }
