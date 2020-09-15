@@ -1,11 +1,11 @@
 FROM golang
 
-WORKDIR /go
+WORKDIR /go/src/app
 
-COPY . .
+COPY src/api/ .
 
 RUN go get -d -v ./...
 
 RUN go install -v ./...
 
-CMD ["movies"]
+CMD ["app"]
